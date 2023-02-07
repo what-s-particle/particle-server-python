@@ -58,3 +58,11 @@ https://blog.51cto.com/yuzhou1su/5357677
 pip install djangorestframework
 ```
 
+protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/addressbook.proto
+
+protoc -I=. --python_out=. ./addressbook.proto
+
+### unit test
+```
+python -m pip install pytest
+```

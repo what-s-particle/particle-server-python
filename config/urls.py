@@ -18,5 +18,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('moments', include('moments.urls'))
+    path('moments/', include('moments.urls')),
+    # path('api/', include('particle.urls'))
 ]

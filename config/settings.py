@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'moments.apps.MomentsConfig',
+    'particle.apps.ParticleConfig',
 ]
 
 MIDDLEWARE = [
