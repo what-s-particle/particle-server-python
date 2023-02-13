@@ -3,7 +3,7 @@ from unittest import TestCase
 import pytest
 from django.core.exceptions import ImproperlyConfigured
 
-from particle.protos import addressbook_pb2
+from particle.protos.merge import particle_pb2 as particle
 from particle.protos.renderers import ProtobufRenderer
 
 
@@ -17,7 +17,7 @@ class ProtobufRendersTest(TestCase):
         }
         renderer = ProtobufRenderer()
         content = renderer.render(
-            obj, renderer_context={"protobuf_cls": addressbook_pb2.Person},
+            obj, renderer_context={"protobuf_cls": particle.Person},
         )
         assert content == b"\n\tTest Name\x10*\x1a\x11testname@test.com"
 
@@ -30,7 +30,7 @@ class ProtobufRendersTest(TestCase):
         renderer = ProtobufRenderer()
         with pytest.raises(AttributeError):
             renderer.render(
-                obj, renderer_context={"protobuf_cls": addressbook_pb2.Person},
+                obj, renderer_context={"protobuf_cls": particle.Person},
             )
 
     def test_missing_protobuf_cls(self):

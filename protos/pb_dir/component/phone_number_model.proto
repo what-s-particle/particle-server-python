@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "pb_dir/component/phone_type_model.proto";
+
+message PhoneNumber {
+  string number = 1;
+  PhoneType type = 2;
+}

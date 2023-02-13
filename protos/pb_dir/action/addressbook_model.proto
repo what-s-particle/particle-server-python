@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "pb_dir/enum/person_model.proto";
+
+message AddressBook {
+  repeated Person people = 1;
+}

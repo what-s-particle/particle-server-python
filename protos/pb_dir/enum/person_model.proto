@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package com.yunlong.particle.proto;
+
+import "pb_dir/component/phone_number_model.proto";
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+  repeated PhoneNumber phones = 4;
+}
