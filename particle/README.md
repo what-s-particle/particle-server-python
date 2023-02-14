@@ -1,0 +1,1 @@
+Run `/scripts/generate.sh` to generate the `.py` files corresponding to the protocol.

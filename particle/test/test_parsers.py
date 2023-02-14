@@ -2,8 +2,8 @@ import pytest
 from django.core.exceptions import ImproperlyConfigured
 from django.test import TestCase
 
-from particle.protos.merge import particle_pb2 as particle
-from particle.protos.parsers import ProtobufParser
+from particle.protos import particle
+from particle.scripts.parsers import ProtobufParser
 
 
 class ProtobufParserTestCase(TestCase):

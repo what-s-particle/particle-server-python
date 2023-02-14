@@ -3,8 +3,8 @@ from unittest import TestCase
 import pytest
 from django.core.exceptions import ImproperlyConfigured
 
-from particle.protos.merge import particle_pb2 as particle
-from particle.protos.renderers import ProtobufRenderer
+from particle.protos import particle
+from particle.scripts.renderers import ProtobufRenderer
 
 
 class ProtobufRendersTest(TestCase):

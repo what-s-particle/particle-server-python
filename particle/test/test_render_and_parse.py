@@ -1,8 +1,8 @@
 from unittest import TestCase
 
-from particle.protos.merge import particle_pb2 as particle
-from particle.protos.parsers import ProtobufParser
-from particle.protos.renderers import ProtobufRenderer
+from particle.protos import particle
+from particle.scripts.parsers import ProtobufParser
+from particle.scripts.renderers import ProtobufRenderer
 
 
 class ProtobufRenderAndParserTestCase(TestCase):
