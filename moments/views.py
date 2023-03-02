@@ -1,18 +1,17 @@
 from django.http import HttpResponse
 from google.protobuf import json_format
 
-from particle.protos.particle import Person, AddressBook
+from particle.protos import particle_pb2
 
 
 def index(request):
-    # return HttpResponse("Hello world. You're at the the moments index.")
-    people = [
-        Person(id=42, name="Test Name", email="testname@test.com"),
-        Person(id=43, name="Test Name 1", email="testname1@test.com")
-    ]
-    address_book = AddressBook(people=people)
+    modifier = particle_pb2.Modifier(visible=True, clickable=True)
+    interactions = []
+    component = particle_pb2.TextComponent(content="content")
+    element = particle_pb2.ElementComponent(label=component)
+    particle = particle_pb2.Particle(id="id-123", element=element, modifier=modifier, interactions=interactions)
 
     if request.content_type == "application/octet-stream":
-        return HttpResponse(address_book.SerializeToString(), content_type="application/octet-stream")
+        return HttpResponse(particle.SerializeToString(), content_type="application/octet-stream")
     else:
-        return HttpResponse(json_format.MessageToJson(address_book), content_type="application/json")
+        return HttpResponse(json_format.MessageToJson(particle), content_type="application/json")

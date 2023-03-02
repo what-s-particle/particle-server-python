@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from particle.protos import particle
+from particle.protos.particle import Particle
 from particle.scripts.parsers import ProtobufParser
 from particle.scripts.renderers import ProtobufRenderer
 

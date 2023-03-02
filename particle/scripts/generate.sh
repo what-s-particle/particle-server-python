@@ -76,23 +76,21 @@ sed -i '/}/{G;}' "${new_pb_file}"
 
 # Add "syntax" , "import" and "new line" lines to the beginning of the file
 echo "" | cat - "${new_pb_file}" >temp && mv temp "${new_pb_file}"
-echo "package com.yunlong.particle.proto;" | cat - "${new_pb_file}" >temp && mv temp "${new_pb_file}"
+#echo "package com.yunlong.particle.proto;" | cat - "${new_pb_file}" >temp && mv temp "${new_pb_file}"
 echo "syntax = 'proto3';" | cat - "${new_pb_file}" >temp && mv temp "${new_pb_file}"
 
 
 protoc --python_out=${gen_py_dir} ${new_pb_file}
 
 # Rename "xxx_pb2.py" to "xxx.py"
-for file  in $(find "${gen_py_dir}" -name "*.py"); do
-    new_name=${file/_pb2/}
-    mv "${file}" "${new_name}"
-done
-
-rm -rf $new_pb_file
-
+#for file  in $(find "${gen_py_dir}" -name "*.py"); do
+#    new_name=${file/_pb2/}
+#    mv "${file}" "${new_name}"
+#done
 
 # Move each subdirectory to the parent directory
 mv "${gen_py_dir}/generate" "${new_py_dir}"
+mv "${new_pb_file}" "${new_py_dir}"
 
 for subdir in $new_py_dir/*; do
   if [ -d "$subdir" ]; then
