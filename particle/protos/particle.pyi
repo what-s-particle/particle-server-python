@@ -232,6 +232,14 @@ class CustomModifier(_message.Message):
     payload: str
     def __init__(self, id: _Optional[str] = ..., payload: _Optional[str] = ...) -> None: ...
 
+class Destination(_message.Message):
+    __slots__ = ["content", "route"]
+    CONTENT_FIELD_NUMBER: _ClassVar[int]
+    ROUTE_FIELD_NUMBER: _ClassVar[int]
+    content: Particle
+    route: str
+    def __init__(self, route: _Optional[str] = ..., content: _Optional[_Union[Particle, _Mapping]] = ...) -> None: ...
+
 class ElementComponent(_message.Message):
     __slots__ = ["action_sheet", "alert", "button", "checkbox", "image", "label", "navigation_view_item", "picker", "radio_button", "slider", "text_editor", "text_field", "toggle", "top_app_bar"]
     ACTION_SHEET_FIELD_NUMBER: _ClassVar[int]
@@ -307,9 +315,10 @@ class Interaction(_message.Message):
     def __init__(self, event: _Optional[_Iterable[_Union[Event, str]]] = ..., action: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
 
 class LayoutComponent(_message.Message):
-    __slots__ = ["box", "column", "lazy_column", "lazy_row", "navigation_view", "row", "tab_view"]
+    __slots__ = ["box", "column", "destination", "lazy_column", "lazy_row", "navigation_view", "row", "tab_view"]
     BOX_FIELD_NUMBER: _ClassVar[int]
     COLUMN_FIELD_NUMBER: _ClassVar[int]
+    DESTINATION_FIELD_NUMBER: _ClassVar[int]
     LAZY_COLUMN_FIELD_NUMBER: _ClassVar[int]
     LAZY_ROW_FIELD_NUMBER: _ClassVar[int]
     NAVIGATION_VIEW_FIELD_NUMBER: _ClassVar[int]
@@ -317,12 +326,13 @@ class LayoutComponent(_message.Message):
     TAB_VIEW_FIELD_NUMBER: _ClassVar[int]
     box: BoxComponent
     column: ColumnComponent
+    destination: Destination
     lazy_column: LazyColumnComponent
     lazy_row: LazyRowComponent
     navigation_view: NavigationViewComponent
     row: RowComponent
     tab_view: TabViewComponent
-    def __init__(self, row: _Optional[_Union[RowComponent, _Mapping]] = ..., column: _Optional[_Union[ColumnComponent, _Mapping]] = ..., box: _Optional[_Union[BoxComponent, _Mapping]] = ..., lazy_column: _Optional[_Union[LazyColumnComponent, _Mapping]] = ..., lazy_row: _Optional[_Union[LazyRowComponent, _Mapping]] = ..., tab_view: _Optional[_Union[TabViewComponent, _Mapping]] = ..., navigation_view: _Optional[_Union[NavigationViewComponent, _Mapping]] = ...) -> None: ...
+    def __init__(self, row: _Optional[_Union[RowComponent, _Mapping]] = ..., column: _Optional[_Union[ColumnComponent, _Mapping]] = ..., box: _Optional[_Union[BoxComponent, _Mapping]] = ..., lazy_column: _Optional[_Union[LazyColumnComponent, _Mapping]] = ..., lazy_row: _Optional[_Union[LazyRowComponent, _Mapping]] = ..., tab_view: _Optional[_Union[TabViewComponent, _Mapping]] = ..., navigation_view: _Optional[_Union[NavigationViewComponent, _Mapping]] = ..., destination: _Optional[_Union[Destination, _Mapping]] = ...) -> None: ...
 
 class LazyColumnComponent(_message.Message):
     __slots__ = ["alignment", "arrangement", "content_padding", "elements", "reverse_layout", "spacing"]
@@ -395,12 +405,12 @@ class NavigateBackAction(_message.Message):
     def __init__(self, mode: _Optional[_Union[NavigationMode, str]] = ...) -> None: ...
 
 class NavigateToAction(_message.Message):
-    __slots__ = ["mode", "target"]
+    __slots__ = ["mode", "route"]
     MODE_FIELD_NUMBER: _ClassVar[int]
-    TARGET_FIELD_NUMBER: _ClassVar[int]
+    ROUTE_FIELD_NUMBER: _ClassVar[int]
     mode: NavigationMode
-    target: str
-    def __init__(self, target: _Optional[str] = ..., mode: _Optional[_Union[NavigationMode, str]] = ...) -> None: ...
+    route: str
+    def __init__(self, route: _Optional[str] = ..., mode: _Optional[_Union[NavigationMode, str]] = ...) -> None: ...
 
 class NavigationBarItemComponent(_message.Message):
     __slots__ = ["icon", "selected", "text"]
@@ -411,6 +421,16 @@ class NavigationBarItemComponent(_message.Message):
     selected: bool
     text: Particle
     def __init__(self, text: _Optional[_Union[Particle, _Mapping]] = ..., icon: _Optional[_Union[Particle, _Mapping]] = ..., selected: bool = ...) -> None: ...
+
+class NavigationComponent(_message.Message):
+    __slots__ = ["destinations", "name", "startDestination"]
+    DESTINATIONS_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    STARTDESTINATION_FIELD_NUMBER: _ClassVar[int]
+    destinations: _containers.RepeatedCompositeFieldContainer[Particle]
+    name: str
+    startDestination: str
+    def __init__(self, name: _Optional[str] = ..., destinations: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., startDestination: _Optional[str] = ...) -> None: ...
 
 class NavigationViewComponent(_message.Message):
     __slots__ = ["bars", "elements", "selected_element"]
@@ -437,18 +457,20 @@ class OpenExternalAppAction(_message.Message):
     def __init__(self, url: _Optional[str] = ...) -> None: ...
 
 class Particle(_message.Message):
-    __slots__ = ["element", "id", "interactions", "layout", "modifier"]
+    __slots__ = ["element", "id", "interactions", "layout", "modifier", "navigation"]
     ELEMENT_FIELD_NUMBER: _ClassVar[int]
     ID_FIELD_NUMBER: _ClassVar[int]
     INTERACTIONS_FIELD_NUMBER: _ClassVar[int]
     LAYOUT_FIELD_NUMBER: _ClassVar[int]
     MODIFIER_FIELD_NUMBER: _ClassVar[int]
+    NAVIGATION_FIELD_NUMBER: _ClassVar[int]
     element: ElementComponent
     id: str
     interactions: _containers.RepeatedCompositeFieldContainer[Interaction]
     layout: LayoutComponent
     modifier: Modifier
-    def __init__(self, id: _Optional[str] = ..., element: _Optional[_Union[ElementComponent, _Mapping]] = ..., layout: _Optional[_Union[LayoutComponent, _Mapping]] = ..., modifier: _Optional[_Union[Modifier, _Mapping]] = ..., interactions: _Optional[_Iterable[_Union[Interaction, _Mapping]]] = ...) -> None: ...
+    navigation: NavigationComponent
+    def __init__(self, id: _Optional[str] = ..., element: _Optional[_Union[ElementComponent, _Mapping]] = ..., layout: _Optional[_Union[LayoutComponent, _Mapping]] = ..., navigation: _Optional[_Union[NavigationComponent, _Mapping]] = ..., modifier: _Optional[_Union[Modifier, _Mapping]] = ..., interactions: _Optional[_Iterable[_Union[Interaction, _Mapping]]] = ...) -> None: ...
 
 class PickerComponent(_message.Message):
     __slots__ = ["options", "selected_option"]
