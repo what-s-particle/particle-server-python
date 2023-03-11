@@ -89,30 +89,30 @@ XXX: SymbolToken
 XXXX: NavigationMode
 
 class Action(_message.Message):
-    __slots__ = ["condition", "custom", "navigate_back", "navigate_to", "open_external_app", "retrieve_data", "send_http_request", "show_dialog", "show_menu", "store_data", "update_modifier"]
+    __slots__ = ["condition", "custom", "navigateBack", "navigateTo", "openExternalApp", "retrieveData", "sendHttpRequest", "showDialog", "showMenu", "storeData", "updateModifier"]
     CONDITION_FIELD_NUMBER: _ClassVar[int]
     CUSTOM_FIELD_NUMBER: _ClassVar[int]
-    NAVIGATE_BACK_FIELD_NUMBER: _ClassVar[int]
-    NAVIGATE_TO_FIELD_NUMBER: _ClassVar[int]
-    OPEN_EXTERNAL_APP_FIELD_NUMBER: _ClassVar[int]
-    RETRIEVE_DATA_FIELD_NUMBER: _ClassVar[int]
-    SEND_HTTP_REQUEST_FIELD_NUMBER: _ClassVar[int]
-    SHOW_DIALOG_FIELD_NUMBER: _ClassVar[int]
-    SHOW_MENU_FIELD_NUMBER: _ClassVar[int]
-    STORE_DATA_FIELD_NUMBER: _ClassVar[int]
-    UPDATE_MODIFIER_FIELD_NUMBER: _ClassVar[int]
+    NAVIGATEBACK_FIELD_NUMBER: _ClassVar[int]
+    NAVIGATETO_FIELD_NUMBER: _ClassVar[int]
+    OPENEXTERNALAPP_FIELD_NUMBER: _ClassVar[int]
+    RETRIEVEDATA_FIELD_NUMBER: _ClassVar[int]
+    SENDHTTPREQUEST_FIELD_NUMBER: _ClassVar[int]
+    SHOWDIALOG_FIELD_NUMBER: _ClassVar[int]
+    SHOWMENU_FIELD_NUMBER: _ClassVar[int]
+    STOREDATA_FIELD_NUMBER: _ClassVar[int]
+    UPDATEMODIFIER_FIELD_NUMBER: _ClassVar[int]
     condition: ConditionAction
     custom: CustomAction
-    navigate_back: NavigateBackAction
-    navigate_to: NavigateToAction
-    open_external_app: OpenExternalAppAction
-    retrieve_data: RetrieveDataAction
-    send_http_request: SendHttpRequestAction
-    show_dialog: ShowDialogAction
-    show_menu: ShowMenuAction
-    store_data: StoreDataAction
-    update_modifier: UpdateModifierAction
-    def __init__(self, custom: _Optional[_Union[CustomAction, _Mapping]] = ..., navigate_to: _Optional[_Union[NavigateToAction, _Mapping]] = ..., navigate_back: _Optional[_Union[NavigateBackAction, _Mapping]] = ..., show_dialog: _Optional[_Union[ShowDialogAction, _Mapping]] = ..., show_menu: _Optional[_Union[ShowMenuAction, _Mapping]] = ..., update_modifier: _Optional[_Union[UpdateModifierAction, _Mapping]] = ..., store_data: _Optional[_Union[StoreDataAction, _Mapping]] = ..., send_http_request: _Optional[_Union[SendHttpRequestAction, _Mapping]] = ..., open_external_app: _Optional[_Union[OpenExternalAppAction, _Mapping]] = ..., condition: _Optional[_Union[ConditionAction, _Mapping]] = ..., retrieve_data: _Optional[_Union[RetrieveDataAction, _Mapping]] = ...) -> None: ...
+    navigateBack: NavigateBackAction
+    navigateTo: NavigateToAction
+    openExternalApp: OpenExternalAppAction
+    retrieveData: RetrieveDataAction
+    sendHttpRequest: SendHttpRequestAction
+    showDialog: ShowDialogAction
+    showMenu: ShowMenuAction
+    storeData: StoreDataAction
+    updateModifier: UpdateModifierAction
+    def __init__(self, custom: _Optional[_Union[CustomAction, _Mapping]] = ..., navigateTo: _Optional[_Union[NavigateToAction, _Mapping]] = ..., navigateBack: _Optional[_Union[NavigateBackAction, _Mapping]] = ..., showDialog: _Optional[_Union[ShowDialogAction, _Mapping]] = ..., showMenu: _Optional[_Union[ShowMenuAction, _Mapping]] = ..., updateModifier: _Optional[_Union[UpdateModifierAction, _Mapping]] = ..., storeData: _Optional[_Union[StoreDataAction, _Mapping]] = ..., sendHttpRequest: _Optional[_Union[SendHttpRequestAction, _Mapping]] = ..., openExternalApp: _Optional[_Union[OpenExternalAppAction, _Mapping]] = ..., condition: _Optional[_Union[ConditionAction, _Mapping]] = ..., retrieveData: _Optional[_Union[RetrieveDataAction, _Mapping]] = ...) -> None: ...
 
 class ActionSheetComponent(_message.Message):
     __slots__ = ["buttons", "message", "title"]
@@ -145,6 +145,24 @@ class BorderModifier(_message.Message):
     color: ColorModifier
     width: int
     def __init__(self, width: _Optional[int] = ..., color: _Optional[_Union[ColorModifier, _Mapping]] = ...) -> None: ...
+
+class BottomBarComponent(_message.Message):
+    __slots__ = ["elements", "selectedElement"]
+    ELEMENTS_FIELD_NUMBER: _ClassVar[int]
+    SELECTEDELEMENT_FIELD_NUMBER: _ClassVar[int]
+    elements: _containers.RepeatedCompositeFieldContainer[Particle]
+    selectedElement: str
+    def __init__(self, elements: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., selectedElement: _Optional[str] = ...) -> None: ...
+
+class BottomBarItemComponent(_message.Message):
+    __slots__ = ["icon", "selected", "text"]
+    ICON_FIELD_NUMBER: _ClassVar[int]
+    SELECTED_FIELD_NUMBER: _ClassVar[int]
+    TEXT_FIELD_NUMBER: _ClassVar[int]
+    icon: Particle
+    selected: bool
+    text: Particle
+    def __init__(self, text: _Optional[_Union[Particle, _Mapping]] = ..., icon: _Optional[_Union[Particle, _Mapping]] = ..., selected: bool = ...) -> None: ...
 
 class BoxComponent(_message.Message):
     __slots__ = ["elements"]
@@ -203,14 +221,14 @@ class ColumnComponent(_message.Message):
     def __init__(self, elements: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., arrangement: _Optional[_Union[Arrangement, str]] = ..., alignment: _Optional[_Union[Alignment, str]] = ..., spacing: _Optional[_Union[SizeModifier, _Mapping]] = ...) -> None: ...
 
 class ConditionAction(_message.Message):
-    __slots__ = ["else_actions", "if_actions", "type"]
-    ELSE_ACTIONS_FIELD_NUMBER: _ClassVar[int]
-    IF_ACTIONS_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ["elseActions", "ifActions", "type"]
+    ELSEACTIONS_FIELD_NUMBER: _ClassVar[int]
+    IFACTIONS_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
-    else_actions: _containers.RepeatedCompositeFieldContainer[Action]
-    if_actions: _containers.RepeatedCompositeFieldContainer[Action]
+    elseActions: _containers.RepeatedCompositeFieldContainer[Action]
+    ifActions: _containers.RepeatedCompositeFieldContainer[Action]
     type: ConditionType
-    def __init__(self, type: _Optional[_Union[ConditionType, _Mapping]] = ..., if_actions: _Optional[_Iterable[_Union[Action, _Mapping]]] = ..., else_actions: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
+    def __init__(self, type: _Optional[_Union[ConditionType, _Mapping]] = ..., ifActions: _Optional[_Iterable[_Union[Action, _Mapping]]] = ..., elseActions: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
 
 class ConditionType(_message.Message):
     __slots__ = []
@@ -232,45 +250,37 @@ class CustomModifier(_message.Message):
     payload: str
     def __init__(self, id: _Optional[str] = ..., payload: _Optional[str] = ...) -> None: ...
 
-class Destination(_message.Message):
-    __slots__ = ["content", "route"]
-    CONTENT_FIELD_NUMBER: _ClassVar[int]
-    ROUTE_FIELD_NUMBER: _ClassVar[int]
-    content: Particle
-    route: str
-    def __init__(self, route: _Optional[str] = ..., content: _Optional[_Union[Particle, _Mapping]] = ...) -> None: ...
-
 class ElementComponent(_message.Message):
-    __slots__ = ["action_sheet", "alert", "button", "checkbox", "image", "label", "navigation_view_item", "picker", "radio_button", "slider", "text_editor", "text_field", "toggle", "top_app_bar"]
-    ACTION_SHEET_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ["actionSheet", "alert", "bottomBarItem", "button", "checkbox", "image", "label", "picker", "radioButton", "slider", "textEditor", "textField", "toggle", "topAppBar"]
+    ACTIONSHEET_FIELD_NUMBER: _ClassVar[int]
     ALERT_FIELD_NUMBER: _ClassVar[int]
+    BOTTOMBARITEM_FIELD_NUMBER: _ClassVar[int]
     BUTTON_FIELD_NUMBER: _ClassVar[int]
     CHECKBOX_FIELD_NUMBER: _ClassVar[int]
     IMAGE_FIELD_NUMBER: _ClassVar[int]
     LABEL_FIELD_NUMBER: _ClassVar[int]
-    NAVIGATION_VIEW_ITEM_FIELD_NUMBER: _ClassVar[int]
     PICKER_FIELD_NUMBER: _ClassVar[int]
-    RADIO_BUTTON_FIELD_NUMBER: _ClassVar[int]
+    RADIOBUTTON_FIELD_NUMBER: _ClassVar[int]
     SLIDER_FIELD_NUMBER: _ClassVar[int]
-    TEXT_EDITOR_FIELD_NUMBER: _ClassVar[int]
-    TEXT_FIELD_FIELD_NUMBER: _ClassVar[int]
+    TEXTEDITOR_FIELD_NUMBER: _ClassVar[int]
+    TEXTFIELD_FIELD_NUMBER: _ClassVar[int]
     TOGGLE_FIELD_NUMBER: _ClassVar[int]
-    TOP_APP_BAR_FIELD_NUMBER: _ClassVar[int]
-    action_sheet: ActionSheetComponent
+    TOPAPPBAR_FIELD_NUMBER: _ClassVar[int]
+    actionSheet: ActionSheetComponent
     alert: AlertComponent
+    bottomBarItem: BottomBarItemComponent
     button: ButtonComponent
     checkbox: CheckBoxComponent
     image: ImageComponent
     label: TextComponent
-    navigation_view_item: NavigationBarItemComponent
     picker: PickerComponent
-    radio_button: RadioButtonComponent
+    radioButton: RadioButtonComponent
     slider: SliderComponent
-    text_editor: TextEditorComponent
-    text_field: TextFieldComponent
+    textEditor: TextEditorComponent
+    textField: TextFieldComponent
     toggle: ToggleComponent
-    top_app_bar: TopAppBarComponent
-    def __init__(self, button: _Optional[_Union[ButtonComponent, _Mapping]] = ..., label: _Optional[_Union[TextComponent, _Mapping]] = ..., image: _Optional[_Union[ImageComponent, _Mapping]] = ..., text_field: _Optional[_Union[TextFieldComponent, _Mapping]] = ..., text_editor: _Optional[_Union[TextEditorComponent, _Mapping]] = ..., slider: _Optional[_Union[SliderComponent, _Mapping]] = ..., toggle: _Optional[_Union[ToggleComponent, _Mapping]] = ..., checkbox: _Optional[_Union[CheckBoxComponent, _Mapping]] = ..., radio_button: _Optional[_Union[RadioButtonComponent, _Mapping]] = ..., picker: _Optional[_Union[PickerComponent, _Mapping]] = ..., top_app_bar: _Optional[_Union[TopAppBarComponent, _Mapping]] = ..., navigation_view_item: _Optional[_Union[NavigationBarItemComponent, _Mapping]] = ..., alert: _Optional[_Union[AlertComponent, _Mapping]] = ..., action_sheet: _Optional[_Union[ActionSheetComponent, _Mapping]] = ...) -> None: ...
+    topAppBar: TopAppBarComponent
+    def __init__(self, button: _Optional[_Union[ButtonComponent, _Mapping]] = ..., label: _Optional[_Union[TextComponent, _Mapping]] = ..., image: _Optional[_Union[ImageComponent, _Mapping]] = ..., textField: _Optional[_Union[TextFieldComponent, _Mapping]] = ..., textEditor: _Optional[_Union[TextEditorComponent, _Mapping]] = ..., slider: _Optional[_Union[SliderComponent, _Mapping]] = ..., toggle: _Optional[_Union[ToggleComponent, _Mapping]] = ..., checkbox: _Optional[_Union[CheckBoxComponent, _Mapping]] = ..., radioButton: _Optional[_Union[RadioButtonComponent, _Mapping]] = ..., picker: _Optional[_Union[PickerComponent, _Mapping]] = ..., topAppBar: _Optional[_Union[TopAppBarComponent, _Mapping]] = ..., bottomBarItem: _Optional[_Union[BottomBarItemComponent, _Mapping]] = ..., alert: _Optional[_Union[AlertComponent, _Mapping]] = ..., actionSheet: _Optional[_Union[ActionSheetComponent, _Mapping]] = ...) -> None: ...
 
 class IconComponent(_message.Message):
     __slots__ = ["description", "symbol"]
@@ -315,59 +325,71 @@ class Interaction(_message.Message):
     def __init__(self, event: _Optional[_Iterable[_Union[Event, str]]] = ..., action: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
 
 class LayoutComponent(_message.Message):
-    __slots__ = ["box", "column", "destination", "lazy_column", "lazy_row", "navigation_view", "row", "tab_view"]
+    __slots__ = ["bottomBar", "box", "column", "lazyColumn", "lazyRow", "modalDrawer", "navGraph", "row", "screen", "tabView", "topBar"]
+    BOTTOMBAR_FIELD_NUMBER: _ClassVar[int]
     BOX_FIELD_NUMBER: _ClassVar[int]
     COLUMN_FIELD_NUMBER: _ClassVar[int]
-    DESTINATION_FIELD_NUMBER: _ClassVar[int]
-    LAZY_COLUMN_FIELD_NUMBER: _ClassVar[int]
-    LAZY_ROW_FIELD_NUMBER: _ClassVar[int]
-    NAVIGATION_VIEW_FIELD_NUMBER: _ClassVar[int]
+    LAZYCOLUMN_FIELD_NUMBER: _ClassVar[int]
+    LAZYROW_FIELD_NUMBER: _ClassVar[int]
+    MODALDRAWER_FIELD_NUMBER: _ClassVar[int]
+    NAVGRAPH_FIELD_NUMBER: _ClassVar[int]
     ROW_FIELD_NUMBER: _ClassVar[int]
-    TAB_VIEW_FIELD_NUMBER: _ClassVar[int]
+    SCREEN_FIELD_NUMBER: _ClassVar[int]
+    TABVIEW_FIELD_NUMBER: _ClassVar[int]
+    TOPBAR_FIELD_NUMBER: _ClassVar[int]
+    bottomBar: BottomBarComponent
     box: BoxComponent
     column: ColumnComponent
-    destination: Destination
-    lazy_column: LazyColumnComponent
-    lazy_row: LazyRowComponent
-    navigation_view: NavigationViewComponent
+    lazyColumn: LazyColumnComponent
+    lazyRow: LazyRowComponent
+    modalDrawer: ModalDrawerComponent
+    navGraph: NavGraphComponent
     row: RowComponent
-    tab_view: TabViewComponent
-    def __init__(self, row: _Optional[_Union[RowComponent, _Mapping]] = ..., column: _Optional[_Union[ColumnComponent, _Mapping]] = ..., box: _Optional[_Union[BoxComponent, _Mapping]] = ..., lazy_column: _Optional[_Union[LazyColumnComponent, _Mapping]] = ..., lazy_row: _Optional[_Union[LazyRowComponent, _Mapping]] = ..., tab_view: _Optional[_Union[TabViewComponent, _Mapping]] = ..., navigation_view: _Optional[_Union[NavigationViewComponent, _Mapping]] = ..., destination: _Optional[_Union[Destination, _Mapping]] = ...) -> None: ...
+    screen: ScreenComponent
+    tabView: TabViewComponent
+    topBar: TopBarComponent
+    def __init__(self, navGraph: _Optional[_Union[NavGraphComponent, _Mapping]] = ..., screen: _Optional[_Union[ScreenComponent, _Mapping]] = ..., topBar: _Optional[_Union[TopBarComponent, _Mapping]] = ..., bottomBar: _Optional[_Union[BottomBarComponent, _Mapping]] = ..., modalDrawer: _Optional[_Union[ModalDrawerComponent, _Mapping]] = ..., row: _Optional[_Union[RowComponent, _Mapping]] = ..., column: _Optional[_Union[ColumnComponent, _Mapping]] = ..., box: _Optional[_Union[BoxComponent, _Mapping]] = ..., lazyColumn: _Optional[_Union[LazyColumnComponent, _Mapping]] = ..., lazyRow: _Optional[_Union[LazyRowComponent, _Mapping]] = ..., tabView: _Optional[_Union[TabViewComponent, _Mapping]] = ...) -> None: ...
 
 class LazyColumnComponent(_message.Message):
-    __slots__ = ["alignment", "arrangement", "content_padding", "elements", "reverse_layout", "spacing"]
+    __slots__ = ["alignment", "arrangement", "contentPadding", "elements", "reverseLayout", "spacing"]
     ALIGNMENT_FIELD_NUMBER: _ClassVar[int]
     ARRANGEMENT_FIELD_NUMBER: _ClassVar[int]
-    CONTENT_PADDING_FIELD_NUMBER: _ClassVar[int]
+    CONTENTPADDING_FIELD_NUMBER: _ClassVar[int]
     ELEMENTS_FIELD_NUMBER: _ClassVar[int]
-    REVERSE_LAYOUT_FIELD_NUMBER: _ClassVar[int]
+    REVERSELAYOUT_FIELD_NUMBER: _ClassVar[int]
     SPACING_FIELD_NUMBER: _ClassVar[int]
     alignment: Alignment
     arrangement: Arrangement
-    content_padding: InsetsModifier
+    contentPadding: InsetsModifier
     elements: _containers.RepeatedCompositeFieldContainer[Particle]
-    reverse_layout: bool
+    reverseLayout: bool
     spacing: SizeModifier
-    def __init__(self, elements: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., arrangement: _Optional[_Union[Arrangement, str]] = ..., alignment: _Optional[_Union[Alignment, str]] = ..., spacing: _Optional[_Union[SizeModifier, _Mapping]] = ..., reverse_layout: bool = ..., content_padding: _Optional[_Union[InsetsModifier, _Mapping]] = ...) -> None: ...
+    def __init__(self, elements: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., arrangement: _Optional[_Union[Arrangement, str]] = ..., alignment: _Optional[_Union[Alignment, str]] = ..., spacing: _Optional[_Union[SizeModifier, _Mapping]] = ..., reverseLayout: bool = ..., contentPadding: _Optional[_Union[InsetsModifier, _Mapping]] = ...) -> None: ...
 
 class LazyRowComponent(_message.Message):
-    __slots__ = ["alignment", "arrangement", "content_padding", "elements", "reverse_layout", "spacing"]
+    __slots__ = ["alignment", "arrangement", "contentPadding", "elements", "reverseLayout", "spacing"]
     ALIGNMENT_FIELD_NUMBER: _ClassVar[int]
     ARRANGEMENT_FIELD_NUMBER: _ClassVar[int]
-    CONTENT_PADDING_FIELD_NUMBER: _ClassVar[int]
+    CONTENTPADDING_FIELD_NUMBER: _ClassVar[int]
     ELEMENTS_FIELD_NUMBER: _ClassVar[int]
-    REVERSE_LAYOUT_FIELD_NUMBER: _ClassVar[int]
+    REVERSELAYOUT_FIELD_NUMBER: _ClassVar[int]
     SPACING_FIELD_NUMBER: _ClassVar[int]
     alignment: Alignment
     arrangement: Arrangement
-    content_padding: InsetsModifier
+    contentPadding: InsetsModifier
     elements: _containers.RepeatedCompositeFieldContainer[Particle]
-    reverse_layout: bool
+    reverseLayout: bool
     spacing: SizeModifier
-    def __init__(self, elements: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., arrangement: _Optional[_Union[Arrangement, str]] = ..., alignment: _Optional[_Union[Alignment, str]] = ..., spacing: _Optional[_Union[SizeModifier, _Mapping]] = ..., reverse_layout: bool = ..., content_padding: _Optional[_Union[InsetsModifier, _Mapping]] = ...) -> None: ...
+    def __init__(self, elements: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., arrangement: _Optional[_Union[Arrangement, str]] = ..., alignment: _Optional[_Union[Alignment, str]] = ..., spacing: _Optional[_Union[SizeModifier, _Mapping]] = ..., reverseLayout: bool = ..., contentPadding: _Optional[_Union[InsetsModifier, _Mapping]] = ...) -> None: ...
+
+class ModalDrawerComponent(_message.Message):
+    __slots__ = ["content"]
+    CONTENT_FIELD_NUMBER: _ClassVar[int]
+    content: Particle
+    def __init__(self, content: _Optional[_Union[Particle, _Mapping]] = ...) -> None: ...
 
 class Modifier(_message.Message):
-    __slots__ = ["background", "blur", "border", "clickable", "custom", "focusable", "offset", "opacity", "padding", "require_size", "shadow", "size", "visible", "weight"]
+    __slots__ = ["background", "blur", "border", "clickable", "custom", "focusable", "offset", "opacity", "padding", "requireSize", "shadow", "size", "visible", "weight"]
     BACKGROUND_FIELD_NUMBER: _ClassVar[int]
     BLUR_FIELD_NUMBER: _ClassVar[int]
     BORDER_FIELD_NUMBER: _ClassVar[int]
@@ -377,7 +399,7 @@ class Modifier(_message.Message):
     OFFSET_FIELD_NUMBER: _ClassVar[int]
     OPACITY_FIELD_NUMBER: _ClassVar[int]
     PADDING_FIELD_NUMBER: _ClassVar[int]
-    REQUIRE_SIZE_FIELD_NUMBER: _ClassVar[int]
+    REQUIRESIZE_FIELD_NUMBER: _ClassVar[int]
     SHADOW_FIELD_NUMBER: _ClassVar[int]
     SIZE_FIELD_NUMBER: _ClassVar[int]
     VISIBLE_FIELD_NUMBER: _ClassVar[int]
@@ -391,12 +413,22 @@ class Modifier(_message.Message):
     offset: OffsetModifier
     opacity: float
     padding: InsetsModifier
-    require_size: SizeModifier
+    requireSize: SizeModifier
     shadow: ShadowModifier
     size: SizeModifier
     visible: bool
     weight: float
-    def __init__(self, custom: _Optional[_Iterable[_Union[CustomModifier, _Mapping]]] = ..., background: _Optional[_Union[ColorModifier, _Mapping]] = ..., blur: _Optional[_Union[OffsetModifier, _Mapping]] = ..., border: _Optional[_Union[BorderModifier, _Mapping]] = ..., clickable: bool = ..., focusable: bool = ..., offset: _Optional[_Union[OffsetModifier, _Mapping]] = ..., opacity: _Optional[float] = ..., padding: _Optional[_Union[InsetsModifier, _Mapping]] = ..., require_size: _Optional[_Union[SizeModifier, _Mapping]] = ..., shadow: _Optional[_Union[ShadowModifier, str]] = ..., size: _Optional[_Union[SizeModifier, _Mapping]] = ..., visible: bool = ..., weight: _Optional[float] = ...) -> None: ...
+    def __init__(self, custom: _Optional[_Iterable[_Union[CustomModifier, _Mapping]]] = ..., background: _Optional[_Union[ColorModifier, _Mapping]] = ..., blur: _Optional[_Union[OffsetModifier, _Mapping]] = ..., border: _Optional[_Union[BorderModifier, _Mapping]] = ..., clickable: bool = ..., focusable: bool = ..., offset: _Optional[_Union[OffsetModifier, _Mapping]] = ..., opacity: _Optional[float] = ..., padding: _Optional[_Union[InsetsModifier, _Mapping]] = ..., requireSize: _Optional[_Union[SizeModifier, _Mapping]] = ..., shadow: _Optional[_Union[ShadowModifier, str]] = ..., size: _Optional[_Union[SizeModifier, _Mapping]] = ..., visible: bool = ..., weight: _Optional[float] = ...) -> None: ...
+
+class NavGraphComponent(_message.Message):
+    __slots__ = ["name", "screens", "startDestination"]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    SCREENS_FIELD_NUMBER: _ClassVar[int]
+    STARTDESTINATION_FIELD_NUMBER: _ClassVar[int]
+    name: str
+    screens: _containers.RepeatedCompositeFieldContainer[Particle]
+    startDestination: str
+    def __init__(self, name: _Optional[str] = ..., screens: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., startDestination: _Optional[str] = ...) -> None: ...
 
 class NavigateBackAction(_message.Message):
     __slots__ = ["mode"]
@@ -411,36 +443,6 @@ class NavigateToAction(_message.Message):
     mode: NavigationMode
     route: str
     def __init__(self, route: _Optional[str] = ..., mode: _Optional[_Union[NavigationMode, str]] = ...) -> None: ...
-
-class NavigationBarItemComponent(_message.Message):
-    __slots__ = ["icon", "selected", "text"]
-    ICON_FIELD_NUMBER: _ClassVar[int]
-    SELECTED_FIELD_NUMBER: _ClassVar[int]
-    TEXT_FIELD_NUMBER: _ClassVar[int]
-    icon: Particle
-    selected: bool
-    text: Particle
-    def __init__(self, text: _Optional[_Union[Particle, _Mapping]] = ..., icon: _Optional[_Union[Particle, _Mapping]] = ..., selected: bool = ...) -> None: ...
-
-class NavigationComponent(_message.Message):
-    __slots__ = ["destinations", "name", "startDestination"]
-    DESTINATIONS_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    STARTDESTINATION_FIELD_NUMBER: _ClassVar[int]
-    destinations: _containers.RepeatedCompositeFieldContainer[Particle]
-    name: str
-    startDestination: str
-    def __init__(self, name: _Optional[str] = ..., destinations: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., startDestination: _Optional[str] = ...) -> None: ...
-
-class NavigationViewComponent(_message.Message):
-    __slots__ = ["bars", "elements", "selected_element"]
-    BARS_FIELD_NUMBER: _ClassVar[int]
-    ELEMENTS_FIELD_NUMBER: _ClassVar[int]
-    SELECTED_ELEMENT_FIELD_NUMBER: _ClassVar[int]
-    bars: _containers.RepeatedCompositeFieldContainer[Particle]
-    elements: _containers.RepeatedCompositeFieldContainer[Particle]
-    selected_element: str
-    def __init__(self, elements: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., bars: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., selected_element: _Optional[str] = ...) -> None: ...
 
 class OffsetModifier(_message.Message):
     __slots__ = ["xOffset", "yOffset"]
@@ -457,28 +459,26 @@ class OpenExternalAppAction(_message.Message):
     def __init__(self, url: _Optional[str] = ...) -> None: ...
 
 class Particle(_message.Message):
-    __slots__ = ["element", "id", "interactions", "layout", "modifier", "navigation"]
+    __slots__ = ["element", "id", "interactions", "layout", "modifier"]
     ELEMENT_FIELD_NUMBER: _ClassVar[int]
     ID_FIELD_NUMBER: _ClassVar[int]
     INTERACTIONS_FIELD_NUMBER: _ClassVar[int]
     LAYOUT_FIELD_NUMBER: _ClassVar[int]
     MODIFIER_FIELD_NUMBER: _ClassVar[int]
-    NAVIGATION_FIELD_NUMBER: _ClassVar[int]
     element: ElementComponent
     id: str
     interactions: _containers.RepeatedCompositeFieldContainer[Interaction]
     layout: LayoutComponent
     modifier: Modifier
-    navigation: NavigationComponent
-    def __init__(self, id: _Optional[str] = ..., element: _Optional[_Union[ElementComponent, _Mapping]] = ..., layout: _Optional[_Union[LayoutComponent, _Mapping]] = ..., navigation: _Optional[_Union[NavigationComponent, _Mapping]] = ..., modifier: _Optional[_Union[Modifier, _Mapping]] = ..., interactions: _Optional[_Iterable[_Union[Interaction, _Mapping]]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., element: _Optional[_Union[ElementComponent, _Mapping]] = ..., layout: _Optional[_Union[LayoutComponent, _Mapping]] = ..., modifier: _Optional[_Union[Modifier, _Mapping]] = ..., interactions: _Optional[_Iterable[_Union[Interaction, _Mapping]]] = ...) -> None: ...
 
 class PickerComponent(_message.Message):
-    __slots__ = ["options", "selected_option"]
+    __slots__ = ["options", "selectedOption"]
     OPTIONS_FIELD_NUMBER: _ClassVar[int]
-    SELECTED_OPTION_FIELD_NUMBER: _ClassVar[int]
+    SELECTEDOPTION_FIELD_NUMBER: _ClassVar[int]
     options: _containers.RepeatedCompositeFieldContainer[Particle]
-    selected_option: str
-    def __init__(self, options: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., selected_option: _Optional[str] = ...) -> None: ...
+    selectedOption: str
+    def __init__(self, options: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., selectedOption: _Optional[str] = ...) -> None: ...
 
 class RadioButtonComponent(_message.Message):
     __slots__ = ["disabledColor", "enabled", "selected", "selectedColor", "unselectedColor"]
@@ -495,14 +495,14 @@ class RadioButtonComponent(_message.Message):
     def __init__(self, selected: bool = ..., enabled: bool = ..., selectedColor: _Optional[_Union[ColorModifier, _Mapping]] = ..., unselectedColor: _Optional[_Union[ColorModifier, _Mapping]] = ..., disabledColor: _Optional[_Union[ColorModifier, _Mapping]] = ...) -> None: ...
 
 class RetrieveDataAction(_message.Message):
-    __slots__ = ["key", "subsequent_action", "value"]
+    __slots__ = ["key", "subsequentAction", "value"]
     KEY_FIELD_NUMBER: _ClassVar[int]
-    SUBSEQUENT_ACTION_FIELD_NUMBER: _ClassVar[int]
+    SUBSEQUENTACTION_FIELD_NUMBER: _ClassVar[int]
     VALUE_FIELD_NUMBER: _ClassVar[int]
     key: str
-    subsequent_action: _containers.RepeatedCompositeFieldContainer[Action]
+    subsequentAction: _containers.RepeatedCompositeFieldContainer[Action]
     value: str
-    def __init__(self, key: _Optional[str] = ..., value: _Optional[str] = ..., subsequent_action: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
+    def __init__(self, key: _Optional[str] = ..., value: _Optional[str] = ..., subsequentAction: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
 
 class RowComponent(_message.Message):
     __slots__ = ["alignment", "arrangement", "elements", "spacing"]
@@ -516,8 +516,23 @@ class RowComponent(_message.Message):
     spacing: SizeModifier
     def __init__(self, elements: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., arrangement: _Optional[_Union[Arrangement, str]] = ..., alignment: _Optional[_Union[Alignment, str]] = ..., spacing: _Optional[_Union[SizeModifier, _Mapping]] = ...) -> None: ...
 
+class ScreenComponent(_message.Message):
+    __slots__ = ["bottomBar", "content", "modalDrawer", "route", "topBar"]
+    BOTTOMBAR_FIELD_NUMBER: _ClassVar[int]
+    CONTENT_FIELD_NUMBER: _ClassVar[int]
+    FROM_FIELD_NUMBER: _ClassVar[int]
+    MODALDRAWER_FIELD_NUMBER: _ClassVar[int]
+    ROUTE_FIELD_NUMBER: _ClassVar[int]
+    TOPBAR_FIELD_NUMBER: _ClassVar[int]
+    bottomBar: Particle
+    content: Particle
+    modalDrawer: Particle
+    route: str
+    topBar: Particle
+    def __init__(self, route: _Optional[str] = ..., content: _Optional[_Union[Particle, _Mapping]] = ..., bottomBar: _Optional[_Union[Particle, _Mapping]] = ..., topBar: _Optional[_Union[Particle, _Mapping]] = ..., modalDrawer: _Optional[_Union[Particle, _Mapping]] = ..., **kwargs) -> None: ...
+
 class SendHttpRequestAction(_message.Message):
-    __slots__ = ["body", "endpoint", "failure_actions", "success_actions", "type"]
+    __slots__ = ["body", "endpoint", "failureActions", "successActions", "type"]
     class BodyEntry(_message.Message):
         __slots__ = ["key", "value"]
         KEY_FIELD_NUMBER: _ClassVar[int]
@@ -527,15 +542,15 @@ class SendHttpRequestAction(_message.Message):
         def __init__(self, key: _Optional[str] = ..., value: _Optional[str] = ...) -> None: ...
     BODY_FIELD_NUMBER: _ClassVar[int]
     ENDPOINT_FIELD_NUMBER: _ClassVar[int]
-    FAILURE_ACTIONS_FIELD_NUMBER: _ClassVar[int]
-    SUCCESS_ACTIONS_FIELD_NUMBER: _ClassVar[int]
+    FAILUREACTIONS_FIELD_NUMBER: _ClassVar[int]
+    SUCCESSACTIONS_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     body: _containers.ScalarMap[str, str]
     endpoint: str
-    failure_actions: _containers.RepeatedCompositeFieldContainer[Action]
-    success_actions: _containers.RepeatedCompositeFieldContainer[Action]
+    failureActions: _containers.RepeatedCompositeFieldContainer[Action]
+    successActions: _containers.RepeatedCompositeFieldContainer[Action]
     type: RequestType
-    def __init__(self, endpoint: _Optional[str] = ..., type: _Optional[_Union[RequestType, str]] = ..., body: _Optional[_Mapping[str, str]] = ..., success_actions: _Optional[_Iterable[_Union[Action, _Mapping]]] = ..., failure_actions: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
+    def __init__(self, endpoint: _Optional[str] = ..., type: _Optional[_Union[RequestType, str]] = ..., body: _Optional[_Mapping[str, str]] = ..., successActions: _Optional[_Iterable[_Union[Action, _Mapping]]] = ..., failureActions: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
 
 class ShowDialogAction(_message.Message):
     __slots__ = ["dialog"]
@@ -580,18 +595,18 @@ class StoreDataAction(_message.Message):
     def __init__(self, key: _Optional[str] = ..., value: _Optional[str] = ...) -> None: ...
 
 class TabViewComponent(_message.Message):
-    __slots__ = ["enabled", "selected", "selected_color", "tabs", "unselected_color"]
+    __slots__ = ["enabled", "selected", "selectedColor", "tabs", "unselectedColor"]
     ENABLED_FIELD_NUMBER: _ClassVar[int]
-    SELECTED_COLOR_FIELD_NUMBER: _ClassVar[int]
+    SELECTEDCOLOR_FIELD_NUMBER: _ClassVar[int]
     SELECTED_FIELD_NUMBER: _ClassVar[int]
     TABS_FIELD_NUMBER: _ClassVar[int]
-    UNSELECTED_COLOR_FIELD_NUMBER: _ClassVar[int]
+    UNSELECTEDCOLOR_FIELD_NUMBER: _ClassVar[int]
     enabled: bool
     selected: bool
-    selected_color: ColorModifier
+    selectedColor: ColorModifier
     tabs: _containers.RepeatedCompositeFieldContainer[Particle]
-    unselected_color: ColorModifier
-    def __init__(self, tabs: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., selected: bool = ..., enabled: bool = ..., selected_color: _Optional[_Union[ColorModifier, _Mapping]] = ..., unselected_color: _Optional[_Union[ColorModifier, _Mapping]] = ...) -> None: ...
+    unselectedColor: ColorModifier
+    def __init__(self, tabs: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., selected: bool = ..., enabled: bool = ..., selectedColor: _Optional[_Union[ColorModifier, _Mapping]] = ..., unselectedColor: _Optional[_Union[ColorModifier, _Mapping]] = ...) -> None: ...
 
 class TextComponent(_message.Message):
     __slots__ = ["bold", "color", "content", "fontFamily", "fontSize", "italic", "strikethrough", "underline"]
@@ -638,14 +653,30 @@ class ToggleComponent(_message.Message):
     def __init__(self, label: _Optional[str] = ..., isChecked: bool = ...) -> None: ...
 
 class TopAppBarComponent(_message.Message):
-    __slots__ = ["action_icon", "navigation_icon", "title"]
-    ACTION_ICON_FIELD_NUMBER: _ClassVar[int]
-    NAVIGATION_ICON_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ["actionIcon", "navigationIcon", "title"]
+    ACTIONICON_FIELD_NUMBER: _ClassVar[int]
+    NAVIGATIONICON_FIELD_NUMBER: _ClassVar[int]
     TITLE_FIELD_NUMBER: _ClassVar[int]
-    action_icon: Particle
-    navigation_icon: Particle
+    actionIcon: Particle
+    navigationIcon: Particle
     title: Particle
-    def __init__(self, title: _Optional[_Union[Particle, _Mapping]] = ..., navigation_icon: _Optional[_Union[Particle, _Mapping]] = ..., action_icon: _Optional[_Union[Particle, _Mapping]] = ...) -> None: ...
+    def __init__(self, title: _Optional[_Union[Particle, _Mapping]] = ..., navigationIcon: _Optional[_Union[Particle, _Mapping]] = ..., actionIcon: _Optional[_Union[Particle, _Mapping]] = ...) -> None: ...
+
+class TopBarComponent(_message.Message):
+    __slots__ = ["actions", "backgroundColor", "contentColor", "elevation", "navigationIcon", "title"]
+    ACTIONS_FIELD_NUMBER: _ClassVar[int]
+    BACKGROUNDCOLOR_FIELD_NUMBER: _ClassVar[int]
+    CONTENTCOLOR_FIELD_NUMBER: _ClassVar[int]
+    ELEVATION_FIELD_NUMBER: _ClassVar[int]
+    NAVIGATIONICON_FIELD_NUMBER: _ClassVar[int]
+    TITLE_FIELD_NUMBER: _ClassVar[int]
+    actions: _containers.RepeatedCompositeFieldContainer[Particle]
+    backgroundColor: ColorModifier
+    contentColor: ColorModifier
+    elevation: int
+    navigationIcon: Particle
+    title: Particle
+    def __init__(self, title: _Optional[_Union[Particle, _Mapping]] = ..., navigationIcon: _Optional[_Union[Particle, _Mapping]] = ..., actions: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., elevation: _Optional[int] = ..., backgroundColor: _Optional[_Union[ColorModifier, _Mapping]] = ..., contentColor: _Optional[_Union[ColorModifier, _Mapping]] = ...) -> None: ...
 
 class UpdateModifierAction(_message.Message):
     __slots__ = ["modifier", "override"]
