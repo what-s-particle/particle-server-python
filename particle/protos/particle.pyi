@@ -24,6 +24,55 @@ CHANGE_EVENT: Event
 CONNECT: RequestType
 CUSTOM_FONT: FontFamily
 DEFAULT: ShadowModifier
+DEFAULT_ACCOUNT_BOX: IconComponent
+DEFAULT_ACCOUNT_CIRCLE: IconComponent
+DEFAULT_ADD: IconComponent
+DEFAULT_ADD_CIRCLE: IconComponent
+DEFAULT_ARROW_BACK: IconComponent
+DEFAULT_ARROW_DROP_DOWN: IconComponent
+DEFAULT_ARROW_FORWARD: IconComponent
+DEFAULT_BUILD: IconComponent
+DEFAULT_CALL: IconComponent
+DEFAULT_CHECK: IconComponent
+DEFAULT_CHECK_CIRCLE: IconComponent
+DEFAULT_CLEAR: IconComponent
+DEFAULT_CLOSE: IconComponent
+DEFAULT_CREATE: IconComponent
+DEFAULT_DATE_RANGE: IconComponent
+DEFAULT_DELETE: IconComponent
+DEFAULT_DONE: IconComponent
+DEFAULT_EDIT: IconComponent
+DEFAULT_EMAIL: IconComponent
+DEFAULT_EXIT_TO_APP: IconComponent
+DEFAULT_FACE: IconComponent
+DEFAULT_FAVORITE: IconComponent
+DEFAULT_FAVORITE_BORDER: IconComponent
+DEFAULT_HOME: IconComponent
+DEFAULT_INFO: IconComponent
+DEFAULT_KEYBOARD_ARROW_DOWN: IconComponent
+DEFAULT_KEYBOARD_ARROW_LEFT: IconComponent
+DEFAULT_KEYBOARD_ARROW_RIGHT: IconComponent
+DEFAULT_KEYBOARD_ARROW_UP: IconComponent
+DEFAULT_LIST: IconComponent
+DEFAULT_LOCATION_ON: IconComponent
+DEFAULT_LOCK: IconComponent
+DEFAULT_MAIL_OUTLINE: IconComponent
+DEFAULT_MENU: IconComponent
+DEFAULT_MOR_EVERT: IconComponent
+DEFAULT_NOTIFICATIONS: IconComponent
+DEFAULT_PERSON: IconComponent
+DEFAULT_PHONE: IconComponent
+DEFAULT_PLACE: IconComponent
+DEFAULT_PLAY_ARROW: IconComponent
+DEFAULT_REFRESH: IconComponent
+DEFAULT_SEARCH: IconComponent
+DEFAULT_SEND: IconComponent
+DEFAULT_SETTINGS: IconComponent
+DEFAULT_SHARE: IconComponent
+DEFAULT_SHOPPINGCART: IconComponent
+DEFAULT_STAR: IconComponent
+DEFAULT_THUMBUP: IconComponent
+DEFAULT_WARNING: IconComponent
 DELETE: RequestType
 DESCRIPTOR: _descriptor.FileDescriptor
 DOUBLE_TAP_EVENT: Event
@@ -85,7 +134,6 @@ TOP_START: Alignment
 TOUCH_EVENT: Event
 TRACE: RequestType
 UNDEFINED: FontFamily
-XXX: SymbolToken
 XXXX: NavigationMode
 
 class Action(_message.Message):
@@ -250,46 +298,6 @@ class CustomModifier(_message.Message):
     payload: str
     def __init__(self, id: _Optional[str] = ..., payload: _Optional[str] = ...) -> None: ...
 
-class ElementComponent(_message.Message):
-    __slots__ = ["actionSheet", "alert", "bottomBarItem", "button", "checkbox", "image", "label", "picker", "radioButton", "slider", "textEditor", "textField", "toggle", "topAppBar"]
-    ACTIONSHEET_FIELD_NUMBER: _ClassVar[int]
-    ALERT_FIELD_NUMBER: _ClassVar[int]
-    BOTTOMBARITEM_FIELD_NUMBER: _ClassVar[int]
-    BUTTON_FIELD_NUMBER: _ClassVar[int]
-    CHECKBOX_FIELD_NUMBER: _ClassVar[int]
-    IMAGE_FIELD_NUMBER: _ClassVar[int]
-    LABEL_FIELD_NUMBER: _ClassVar[int]
-    PICKER_FIELD_NUMBER: _ClassVar[int]
-    RADIOBUTTON_FIELD_NUMBER: _ClassVar[int]
-    SLIDER_FIELD_NUMBER: _ClassVar[int]
-    TEXTEDITOR_FIELD_NUMBER: _ClassVar[int]
-    TEXTFIELD_FIELD_NUMBER: _ClassVar[int]
-    TOGGLE_FIELD_NUMBER: _ClassVar[int]
-    TOPAPPBAR_FIELD_NUMBER: _ClassVar[int]
-    actionSheet: ActionSheetComponent
-    alert: AlertComponent
-    bottomBarItem: BottomBarItemComponent
-    button: ButtonComponent
-    checkbox: CheckBoxComponent
-    image: ImageComponent
-    label: TextComponent
-    picker: PickerComponent
-    radioButton: RadioButtonComponent
-    slider: SliderComponent
-    textEditor: TextEditorComponent
-    textField: TextFieldComponent
-    toggle: ToggleComponent
-    topAppBar: TopAppBarComponent
-    def __init__(self, button: _Optional[_Union[ButtonComponent, _Mapping]] = ..., label: _Optional[_Union[TextComponent, _Mapping]] = ..., image: _Optional[_Union[ImageComponent, _Mapping]] = ..., textField: _Optional[_Union[TextFieldComponent, _Mapping]] = ..., textEditor: _Optional[_Union[TextEditorComponent, _Mapping]] = ..., slider: _Optional[_Union[SliderComponent, _Mapping]] = ..., toggle: _Optional[_Union[ToggleComponent, _Mapping]] = ..., checkbox: _Optional[_Union[CheckBoxComponent, _Mapping]] = ..., radioButton: _Optional[_Union[RadioButtonComponent, _Mapping]] = ..., picker: _Optional[_Union[PickerComponent, _Mapping]] = ..., topAppBar: _Optional[_Union[TopAppBarComponent, _Mapping]] = ..., bottomBarItem: _Optional[_Union[BottomBarItemComponent, _Mapping]] = ..., alert: _Optional[_Union[AlertComponent, _Mapping]] = ..., actionSheet: _Optional[_Union[ActionSheetComponent, _Mapping]] = ...) -> None: ...
-
-class IconComponent(_message.Message):
-    __slots__ = ["description", "symbol"]
-    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
-    SYMBOL_FIELD_NUMBER: _ClassVar[int]
-    description: str
-    symbol: SymbolToken
-    def __init__(self, symbol: _Optional[_Union[SymbolToken, str]] = ..., description: _Optional[str] = ...) -> None: ...
-
 class ImageComponent(_message.Message):
     __slots__ = ["circular", "content_mode", "description", "local", "url"]
     CIRCULAR_FIELD_NUMBER: _ClassVar[int]
@@ -323,32 +331,6 @@ class Interaction(_message.Message):
     action: _containers.RepeatedCompositeFieldContainer[Action]
     event: _containers.RepeatedScalarFieldContainer[Event]
     def __init__(self, event: _Optional[_Iterable[_Union[Event, str]]] = ..., action: _Optional[_Iterable[_Union[Action, _Mapping]]] = ...) -> None: ...
-
-class LayoutComponent(_message.Message):
-    __slots__ = ["bottomBar", "box", "column", "lazyColumn", "lazyRow", "modalDrawer", "navGraph", "row", "screen", "tabView", "topBar"]
-    BOTTOMBAR_FIELD_NUMBER: _ClassVar[int]
-    BOX_FIELD_NUMBER: _ClassVar[int]
-    COLUMN_FIELD_NUMBER: _ClassVar[int]
-    LAZYCOLUMN_FIELD_NUMBER: _ClassVar[int]
-    LAZYROW_FIELD_NUMBER: _ClassVar[int]
-    MODALDRAWER_FIELD_NUMBER: _ClassVar[int]
-    NAVGRAPH_FIELD_NUMBER: _ClassVar[int]
-    ROW_FIELD_NUMBER: _ClassVar[int]
-    SCREEN_FIELD_NUMBER: _ClassVar[int]
-    TABVIEW_FIELD_NUMBER: _ClassVar[int]
-    TOPBAR_FIELD_NUMBER: _ClassVar[int]
-    bottomBar: BottomBarComponent
-    box: BoxComponent
-    column: ColumnComponent
-    lazyColumn: LazyColumnComponent
-    lazyRow: LazyRowComponent
-    modalDrawer: ModalDrawerComponent
-    navGraph: NavGraphComponent
-    row: RowComponent
-    screen: ScreenComponent
-    tabView: TabViewComponent
-    topBar: TopBarComponent
-    def __init__(self, navGraph: _Optional[_Union[NavGraphComponent, _Mapping]] = ..., screen: _Optional[_Union[ScreenComponent, _Mapping]] = ..., topBar: _Optional[_Union[TopBarComponent, _Mapping]] = ..., bottomBar: _Optional[_Union[BottomBarComponent, _Mapping]] = ..., modalDrawer: _Optional[_Union[ModalDrawerComponent, _Mapping]] = ..., row: _Optional[_Union[RowComponent, _Mapping]] = ..., column: _Optional[_Union[ColumnComponent, _Mapping]] = ..., box: _Optional[_Union[BoxComponent, _Mapping]] = ..., lazyColumn: _Optional[_Union[LazyColumnComponent, _Mapping]] = ..., lazyRow: _Optional[_Union[LazyRowComponent, _Mapping]] = ..., tabView: _Optional[_Union[TabViewComponent, _Mapping]] = ...) -> None: ...
 
 class LazyColumnComponent(_message.Message):
     __slots__ = ["alignment", "arrangement", "contentPadding", "elements", "reverseLayout", "spacing"]
@@ -459,26 +441,74 @@ class OpenExternalAppAction(_message.Message):
     def __init__(self, url: _Optional[str] = ...) -> None: ...
 
 class Particle(_message.Message):
-    __slots__ = ["element", "id", "interactions", "layout", "modifier"]
-    ELEMENT_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ["actionSheet", "alert", "bottomBar", "bottomBarItem", "box", "button", "checkbox", "column", "icon", "id", "image", "interactions", "label", "lazyColumn", "lazyRow", "modalDrawer", "modifier", "navGraph", "picker", "radioButton", "row", "screen", "slider", "tabView", "textEditor", "textField", "toggle", "topBar"]
+    ACTIONSHEET_FIELD_NUMBER: _ClassVar[int]
+    ALERT_FIELD_NUMBER: _ClassVar[int]
+    BOTTOMBARITEM_FIELD_NUMBER: _ClassVar[int]
+    BOTTOMBAR_FIELD_NUMBER: _ClassVar[int]
+    BOX_FIELD_NUMBER: _ClassVar[int]
+    BUTTON_FIELD_NUMBER: _ClassVar[int]
+    CHECKBOX_FIELD_NUMBER: _ClassVar[int]
+    COLUMN_FIELD_NUMBER: _ClassVar[int]
+    ICON_FIELD_NUMBER: _ClassVar[int]
     ID_FIELD_NUMBER: _ClassVar[int]
+    IMAGE_FIELD_NUMBER: _ClassVar[int]
     INTERACTIONS_FIELD_NUMBER: _ClassVar[int]
-    LAYOUT_FIELD_NUMBER: _ClassVar[int]
+    LABEL_FIELD_NUMBER: _ClassVar[int]
+    LAZYCOLUMN_FIELD_NUMBER: _ClassVar[int]
+    LAZYROW_FIELD_NUMBER: _ClassVar[int]
+    MODALDRAWER_FIELD_NUMBER: _ClassVar[int]
     MODIFIER_FIELD_NUMBER: _ClassVar[int]
-    element: ElementComponent
+    NAVGRAPH_FIELD_NUMBER: _ClassVar[int]
+    PICKER_FIELD_NUMBER: _ClassVar[int]
+    RADIOBUTTON_FIELD_NUMBER: _ClassVar[int]
+    ROW_FIELD_NUMBER: _ClassVar[int]
+    SCREEN_FIELD_NUMBER: _ClassVar[int]
+    SLIDER_FIELD_NUMBER: _ClassVar[int]
+    TABVIEW_FIELD_NUMBER: _ClassVar[int]
+    TEXTEDITOR_FIELD_NUMBER: _ClassVar[int]
+    TEXTFIELD_FIELD_NUMBER: _ClassVar[int]
+    TOGGLE_FIELD_NUMBER: _ClassVar[int]
+    TOPBAR_FIELD_NUMBER: _ClassVar[int]
+    actionSheet: ActionSheetComponent
+    alert: AlertComponent
+    bottomBar: BottomBarComponent
+    bottomBarItem: BottomBarItemComponent
+    box: BoxComponent
+    button: ButtonComponent
+    checkbox: CheckBoxComponent
+    column: ColumnComponent
+    icon: IconComponent
     id: str
+    image: ImageComponent
     interactions: _containers.RepeatedCompositeFieldContainer[Interaction]
-    layout: LayoutComponent
+    label: TextComponent
+    lazyColumn: LazyColumnComponent
+    lazyRow: LazyRowComponent
+    modalDrawer: ModalDrawerComponent
     modifier: Modifier
-    def __init__(self, id: _Optional[str] = ..., element: _Optional[_Union[ElementComponent, _Mapping]] = ..., layout: _Optional[_Union[LayoutComponent, _Mapping]] = ..., modifier: _Optional[_Union[Modifier, _Mapping]] = ..., interactions: _Optional[_Iterable[_Union[Interaction, _Mapping]]] = ...) -> None: ...
+    navGraph: NavGraphComponent
+    picker: PickerComponent
+    radioButton: RadioButtonComponent
+    row: RowComponent
+    screen: ScreenComponent
+    slider: SliderComponent
+    tabView: TabViewComponent
+    textEditor: TextEditorComponent
+    textField: TextFieldComponent
+    toggle: ToggleComponent
+    topBar: TopBarComponent
+    def __init__(self, id: _Optional[str] = ..., modifier: _Optional[_Union[Modifier, _Mapping]] = ..., interactions: _Optional[_Iterable[_Union[Interaction, _Mapping]]] = ..., button: _Optional[_Union[ButtonComponent, _Mapping]] = ..., label: _Optional[_Union[TextComponent, _Mapping]] = ..., image: _Optional[_Union[ImageComponent, _Mapping]] = ..., textField: _Optional[_Union[TextFieldComponent, _Mapping]] = ..., textEditor: _Optional[_Union[TextEditorComponent, _Mapping]] = ..., slider: _Optional[_Union[SliderComponent, _Mapping]] = ..., toggle: _Optional[_Union[ToggleComponent, _Mapping]] = ..., checkbox: _Optional[_Union[CheckBoxComponent, _Mapping]] = ..., radioButton: _Optional[_Union[RadioButtonComponent, _Mapping]] = ..., picker: _Optional[_Union[PickerComponent, _Mapping]] = ..., icon: _Optional[_Union[IconComponent, str]] = ..., bottomBarItem: _Optional[_Union[BottomBarItemComponent, _Mapping]] = ..., alert: _Optional[_Union[AlertComponent, _Mapping]] = ..., actionSheet: _Optional[_Union[ActionSheetComponent, _Mapping]] = ..., navGraph: _Optional[_Union[NavGraphComponent, _Mapping]] = ..., screen: _Optional[_Union[ScreenComponent, _Mapping]] = ..., topBar: _Optional[_Union[TopBarComponent, _Mapping]] = ..., bottomBar: _Optional[_Union[BottomBarComponent, _Mapping]] = ..., modalDrawer: _Optional[_Union[ModalDrawerComponent, _Mapping]] = ..., row: _Optional[_Union[RowComponent, _Mapping]] = ..., column: _Optional[_Union[ColumnComponent, _Mapping]] = ..., box: _Optional[_Union[BoxComponent, _Mapping]] = ..., lazyColumn: _Optional[_Union[LazyColumnComponent, _Mapping]] = ..., lazyRow: _Optional[_Union[LazyRowComponent, _Mapping]] = ..., tabView: _Optional[_Union[TabViewComponent, _Mapping]] = ...) -> None: ...
 
 class PickerComponent(_message.Message):
-    __slots__ = ["options", "selectedOption"]
+    __slots__ = ["iconContent", "options", "trigger"]
+    ICONCONTENT_FIELD_NUMBER: _ClassVar[int]
     OPTIONS_FIELD_NUMBER: _ClassVar[int]
-    SELECTEDOPTION_FIELD_NUMBER: _ClassVar[int]
+    TRIGGER_FIELD_NUMBER: _ClassVar[int]
+    iconContent: Particle
     options: _containers.RepeatedCompositeFieldContainer[Particle]
-    selectedOption: str
-    def __init__(self, options: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., selectedOption: _Optional[str] = ...) -> None: ...
+    trigger: Event
+    def __init__(self, iconContent: _Optional[_Union[Particle, _Mapping]] = ..., options: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., trigger: _Optional[_Union[Event, str]] = ...) -> None: ...
 
 class RadioButtonComponent(_message.Message):
     __slots__ = ["disabledColor", "enabled", "selected", "selectedColor", "unselectedColor"]
@@ -652,16 +682,6 @@ class ToggleComponent(_message.Message):
     label: str
     def __init__(self, label: _Optional[str] = ..., isChecked: bool = ...) -> None: ...
 
-class TopAppBarComponent(_message.Message):
-    __slots__ = ["actionIcon", "navigationIcon", "title"]
-    ACTIONICON_FIELD_NUMBER: _ClassVar[int]
-    NAVIGATIONICON_FIELD_NUMBER: _ClassVar[int]
-    TITLE_FIELD_NUMBER: _ClassVar[int]
-    actionIcon: Particle
-    navigationIcon: Particle
-    title: Particle
-    def __init__(self, title: _Optional[_Union[Particle, _Mapping]] = ..., navigationIcon: _Optional[_Union[Particle, _Mapping]] = ..., actionIcon: _Optional[_Union[Particle, _Mapping]] = ...) -> None: ...
-
 class TopBarComponent(_message.Message):
     __slots__ = ["actions", "backgroundColor", "contentColor", "elevation", "navigationIcon", "title"]
     ACTIONS_FIELD_NUMBER: _ClassVar[int]
@@ -698,10 +718,10 @@ class ShadowModifier(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
 class ContentMode(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []
 
-class SymbolToken(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+class FontFamily(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []
 
-class FontFamily(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+class IconComponent(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []
 
 class Arrangement(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
