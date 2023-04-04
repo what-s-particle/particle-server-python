@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-p&wv^8bfd6zus-t=fu4#oy_up!zacg@306@d^c%md+$4(vw#vc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =['10.0.2.2', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['10.0.2.2', 'localhost', '127.0.0.1']
 
 # Application definition
 
@@ -139,3 +139,5 @@ LOGGING = {
         'level': 'INFO',
     },
 }
+
+TEST_RUNNER = 'snapshottest.django.TestRunner'
