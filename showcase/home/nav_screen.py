@@ -1,20 +1,11 @@
-from particle.base_particle import BaseParticle
 from particle.protos.particle import Modifier, Particle, NavGraphComponent, ScreenComponent, TextComponent
 from showcase.home.first_screen import FirstScreen
 
 
-class HomeScreen(BaseParticle):
-
-    def __init__(self):
-        data = _render()
-        self.particle = data,
-        super().__init__(data)
-
-
-def _render():
+def NavScreen():
     modifier = Modifier(visible=True, clickable=True)
     interactions = []
-    screen1 = FirstScreen().particle
+    screen1 = FirstScreen()
     screens = [screen1, screen2()]
     data = Particle(
         id="nav_graph",

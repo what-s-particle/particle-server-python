@@ -77,7 +77,7 @@ snapshots['TestHome::test_first_screen 1'] = '''{
   }
 }'''
 
-snapshots['TestHome::test_home 1'] = '''{
+snapshots['TestHome::test_nav_screen 1'] = '''{
   "id": "nav_graph",
   "modifier": {
     "clickable": true,

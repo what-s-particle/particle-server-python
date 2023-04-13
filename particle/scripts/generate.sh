@@ -82,15 +82,15 @@ echo "syntax = 'proto3';" | cat - "${new_pb_file}" >temp && mv temp "${new_pb_fi
 protoc --python_out=${gen_py_dir} --pyi_out=${gen_py_dir} ${new_pb_file}
 
 # Rename "xxx_pb2.py" to "xxx.py"
-for file  in $(find "${gen_py_dir}" -name "*.py"); do
-    new_name=${file/_pb2/}
-    mv "${file}" "${new_name}"
-done
+#for file  in $(find "${gen_py_dir}" -name "*.py"); do
+#    new_name=${file/_pb2/}
+#    mv "${file}" "${new_name}"
+#done
 
-for file  in $(find "${gen_py_dir}" -name "*.pyi"); do
-    new_name=${file/_pb2/}
-    mv "${file}" "${new_name}"
-done
+#for file  in $(find "${gen_py_dir}" -name "*.pyi"); do
+#    new_name=${file/_pb2/}
+#    mv "${file}" "${new_name}"
+#done
 
 # Move each subdirectory to the parent directory
 mv "${gen_py_dir}/generate" "${new_py_dir}"

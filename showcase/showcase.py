@@ -1,12 +1,13 @@
 import logging
 
 from particle.base_api_view import BaseHttpResponse
-from showcase.home.home import HomeScreen
+from particle.particle_component import ParticleComponent
+from showcase.home.nav_screen import NavScreen
 
 logger = logging.getLogger(__name__)
 
 
-def get(request):
+def index(request):
     logger.info('A GET request was received.')
-    nav_graph = HomeScreen()
+    nav_graph = ParticleComponent(NavScreen())
     return BaseHttpResponse.response(request, nav_graph)

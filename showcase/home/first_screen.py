@@ -1,18 +1,9 @@
-from particle.base_particle import BaseParticle
 from particle.protos.particle import TextComponent, Particle, \
     BottomBarComponent, TopBarComponent, ScreenComponent, DEFAULT_ARROW_BACK, ModalDrawerComponent, \
     BottomBarItemComponent
+ 
 
-
-class FirstScreen(BaseParticle):
-
-    def __init__(self):
-        data = _render()
-        self.particle = data
-        super().__init__(data)
-
-
-def _render():
+def FirstScreen():
     return Particle(
         id="screen1_destination",
         screen=ScreenComponent(
