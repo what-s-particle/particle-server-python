@@ -22,30 +22,60 @@ snapshots['TestNavScreen::test_first_screen 1'] = '''{
       "bottomBar": {
         "elements": [
           {
-            "id": "bottom_bar_item_1",
+            "id": "bottom-bar-item-1",
+            "interactions": [
+              {
+                "event": [
+                  "TAP_EVENT"
+                ],
+                "action": [
+                  {
+                    "navItemSelected": {
+                      "target": "bottom",
+                      "selectId": "bottom-bar-item-1"
+                    }
+                  }
+                ]
+              }
+            ],
             "bottomBarItem": {
               "text": {
-                "id": "bottom_bar_item_1_text-id",
+                "id": "bottom-bar-item-1-text",
                 "label": {
-                  "content": "tab2"
+                  "content": "Component"
                 }
               },
               "selected": true
             }
           },
           {
-            "id": "bottom_bar_item_1",
+            "id": "bottom-bar-item-2",
+            "interactions": [
+              {
+                "event": [
+                  "TAP_EVENT"
+                ],
+                "action": [
+                  {
+                    "navItemSelected": {
+                      "target": "bottom",
+                      "selectId": "bottom-bar-item-2"
+                    }
+                  }
+                ]
+              }
+            ],
             "bottomBarItem": {
               "text": {
-                "id": "bottom_bar_item_1_text-id",
+                "id": "bottom-bar-item-2-text",
                 "label": {
-                  "content": "tab2"
+                  "content": "Custom"
                 }
               }
             }
           }
         ],
-        "selectedElement": "bottom_bar_item_1"
+        "selectedElement": "bottom-bar-item-1"
       }
     },
     "topBar": {
@@ -54,12 +84,8 @@ snapshots['TestNavScreen::test_first_screen 1'] = '''{
         "title": {
           "id": "top_text-id",
           "label": {
-            "content": "tab1"
+            "content": "Top bar"
           }
-        },
-        "navigationIcon": {
-          "id": "icon",
-          "icon": "DEFAULT_ARROW_BACK"
         }
       }
     },

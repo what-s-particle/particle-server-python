@@ -16,6 +16,21 @@ snapshots['TestNavScreen::test_second_screen 1'] = '''{
       "label": {
         "content": "screen2"
       }
+    },
+    "topBar": {
+      "id": "top",
+      "topBar": {
+        "title": {
+          "id": "top_text-id",
+          "label": {
+            "content": "tab1"
+          }
+        },
+        "navigationIcon": {
+          "id": "icon",
+          "icon": "DEFAULT_ARROW_BACK"
+        }
+      }
     }
   }
 }'''

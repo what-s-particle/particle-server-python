@@ -22,7 +22,7 @@ class TestNavScreen(SimpleTestCase):
         pass
 
     def test_nav_screen(self):
-        screens = [ParticleWrapper(Particle()).data, ParticleWrapper(Particle()).data]
+        screens = [ParticleWrapper(Particle(id="nav-screen-1")).data, ParticleWrapper(Particle(id="nav-screen-2")).data]
         nav_screen = ParticleWrapper(NavScreen(screens))
         self.assertMatchSnapshot(nav_screen.json)
 
