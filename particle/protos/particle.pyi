@@ -137,11 +137,12 @@ UNDEFINED: FontFamily
 XXXX: NavigationMode
 
 class Action(_message.Message):
-    __slots__ = ["condition", "custom", "navigateBack", "navigateTo", "openExternalApp", "retrieveData", "sendHttpRequest", "showDialog", "showMenu", "storeData", "updateModifier"]
+    __slots__ = ["condition", "custom", "navItemSelected", "navigateBack", "navigateTo", "openExternalApp", "retrieveData", "sendHttpRequest", "showDialog", "showMenu", "storeData", "updateModifier"]
     CONDITION_FIELD_NUMBER: _ClassVar[int]
     CUSTOM_FIELD_NUMBER: _ClassVar[int]
     NAVIGATEBACK_FIELD_NUMBER: _ClassVar[int]
     NAVIGATETO_FIELD_NUMBER: _ClassVar[int]
+    NAVITEMSELECTED_FIELD_NUMBER: _ClassVar[int]
     OPENEXTERNALAPP_FIELD_NUMBER: _ClassVar[int]
     RETRIEVEDATA_FIELD_NUMBER: _ClassVar[int]
     SENDHTTPREQUEST_FIELD_NUMBER: _ClassVar[int]
@@ -151,6 +152,7 @@ class Action(_message.Message):
     UPDATEMODIFIER_FIELD_NUMBER: _ClassVar[int]
     condition: ConditionAction
     custom: CustomAction
+    navItemSelected: NavItemSelectedAction
     navigateBack: NavigateBackAction
     navigateTo: NavigateToAction
     openExternalApp: OpenExternalAppAction
@@ -160,7 +162,7 @@ class Action(_message.Message):
     showMenu: ShowMenuAction
     storeData: StoreDataAction
     updateModifier: UpdateModifierAction
-    def __init__(self, custom: _Optional[_Union[CustomAction, _Mapping]] = ..., navigateTo: _Optional[_Union[NavigateToAction, _Mapping]] = ..., navigateBack: _Optional[_Union[NavigateBackAction, _Mapping]] = ..., showDialog: _Optional[_Union[ShowDialogAction, _Mapping]] = ..., showMenu: _Optional[_Union[ShowMenuAction, _Mapping]] = ..., updateModifier: _Optional[_Union[UpdateModifierAction, _Mapping]] = ..., storeData: _Optional[_Union[StoreDataAction, _Mapping]] = ..., sendHttpRequest: _Optional[_Union[SendHttpRequestAction, _Mapping]] = ..., openExternalApp: _Optional[_Union[OpenExternalAppAction, _Mapping]] = ..., condition: _Optional[_Union[ConditionAction, _Mapping]] = ..., retrieveData: _Optional[_Union[RetrieveDataAction, _Mapping]] = ...) -> None: ...
+    def __init__(self, custom: _Optional[_Union[CustomAction, _Mapping]] = ..., navigateTo: _Optional[_Union[NavigateToAction, _Mapping]] = ..., navigateBack: _Optional[_Union[NavigateBackAction, _Mapping]] = ..., showDialog: _Optional[_Union[ShowDialogAction, _Mapping]] = ..., showMenu: _Optional[_Union[ShowMenuAction, _Mapping]] = ..., updateModifier: _Optional[_Union[UpdateModifierAction, _Mapping]] = ..., storeData: _Optional[_Union[StoreDataAction, _Mapping]] = ..., sendHttpRequest: _Optional[_Union[SendHttpRequestAction, _Mapping]] = ..., openExternalApp: _Optional[_Union[OpenExternalAppAction, _Mapping]] = ..., condition: _Optional[_Union[ConditionAction, _Mapping]] = ..., retrieveData: _Optional[_Union[RetrieveDataAction, _Mapping]] = ..., navItemSelected: _Optional[_Union[NavItemSelectedAction, _Mapping]] = ...) -> None: ...
 
 class ActionSheetComponent(_message.Message):
     __slots__ = ["buttons", "message", "title"]
@@ -411,6 +413,14 @@ class NavGraphComponent(_message.Message):
     screens: _containers.RepeatedCompositeFieldContainer[Particle]
     startDestination: str
     def __init__(self, name: _Optional[str] = ..., screens: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., startDestination: _Optional[str] = ...) -> None: ...
+
+class NavItemSelectedAction(_message.Message):
+    __slots__ = ["selectId", "target"]
+    SELECTID_FIELD_NUMBER: _ClassVar[int]
+    TARGET_FIELD_NUMBER: _ClassVar[int]
+    selectId: str
+    target: str
+    def __init__(self, target: _Optional[str] = ..., selectId: _Optional[str] = ...) -> None: ...
 
 class NavigateBackAction(_message.Message):
     __slots__ = ["mode"]
@@ -699,12 +709,14 @@ class TopBarComponent(_message.Message):
     def __init__(self, title: _Optional[_Union[Particle, _Mapping]] = ..., navigationIcon: _Optional[_Union[Particle, _Mapping]] = ..., actions: _Optional[_Iterable[_Union[Particle, _Mapping]]] = ..., elevation: _Optional[int] = ..., backgroundColor: _Optional[_Union[ColorModifier, _Mapping]] = ..., contentColor: _Optional[_Union[ColorModifier, _Mapping]] = ...) -> None: ...
 
 class UpdateModifierAction(_message.Message):
-    __slots__ = ["modifier", "override"]
+    __slots__ = ["modifier", "override", "target"]
     MODIFIER_FIELD_NUMBER: _ClassVar[int]
     OVERRIDE_FIELD_NUMBER: _ClassVar[int]
+    TARGET_FIELD_NUMBER: _ClassVar[int]
     modifier: Modifier
     override: bool
-    def __init__(self, override: bool = ..., modifier: _Optional[_Union[Modifier, _Mapping]] = ...) -> None: ...
+    target: str
+    def __init__(self, target: _Optional[str] = ..., override: bool = ..., modifier: _Optional[_Union[Modifier, _Mapping]] = ...) -> None: ...
 
 class ColorToken(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []

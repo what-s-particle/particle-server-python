@@ -1,0 +1,4 @@
+Django==4.1.7
+djangorestframework==3.14.0
+protobuf==4.23.1
+snapshottest==0.6.0
