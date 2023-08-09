@@ -26,6 +26,7 @@ jobs:
     env:
       TZ: Asia/Shanghai
       REGISTRY: ghcr.io
+      TAG: 0.0.1
     steps:
       - uses: actions/checkout@v3
       - name: Login
@@ -41,5 +42,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.get-tags.outputs.tags }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{env.TAG }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(date +%s)           
