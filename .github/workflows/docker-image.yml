@@ -8,7 +8,7 @@ on:
     branches: [ "main" ]
     
 env:
-  IMAGE_NAME: particle #这是您的镜像名
+  IMAGE_NAME: particle
   
 jobs:
 
@@ -34,7 +34,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }} #此值是github专为Action提供的,这就是上一步没有手动添加的原因
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build && Push
         uses: docker/build-push-action@v2
         with:
@@ -42,5 +42,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{env.TAG }}
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:$(date +%s)           
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ env.TAG }}
+            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest                      
