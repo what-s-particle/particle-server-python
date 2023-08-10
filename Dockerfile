@@ -10,5 +10,7 @@ COPY . /particle
 # Install dependencies
 RUN pip install -r requirements.txt
 
+EXPOSE 3001
+
 # Start the Django server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:3001"]
