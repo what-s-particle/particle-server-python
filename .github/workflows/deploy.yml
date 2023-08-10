@@ -17,7 +17,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-      # 
+      #
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -44,3 +44,11 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: ssh TENCENT to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.TENCENT_CLOUD_IP }}
+          username: ${{ secrets.TENCENT_CLOUD_NAME }}
+          password: ${{ secrets.TENCENT_CLOUD_PASSWORD }}
+          script: cd ~ && sh deploy.sh
