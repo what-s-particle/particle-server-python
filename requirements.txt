@@ -1,4 +1,4 @@
 Django==4.1.10
 djangorestframework==3.14.0
-protobuf==4.23.1
+protobuf==4.24.0
 snapshottest==0.6.0
