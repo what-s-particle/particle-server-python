@@ -1,14 +1,14 @@
-# 使用官方 Python 镜像作为基础镜像
+# Use the official Python image as the base image
 FROM python:3.11.2
 
-# 设置工作目录
+# set working directory
 WORKDIR /particle
 
-# 复制项目文件到容器中
+# Copy the project file to the container
 COPY . /particle
 
-# 安装依赖包
+# Install dependencies
 RUN pip install -r requirements.txt
 
-# 启动 Django 服务器
+# Start the Django server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:3001"]
